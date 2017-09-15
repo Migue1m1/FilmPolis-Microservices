@@ -34,7 +34,7 @@
     "debug": "^3.0.1",
     "express": "^4.15.4",
     "jsonwebtoken": "^8.0.0",
-    "mongoose": "^4.11.10",
+    "mongoose": "^4.10.8",
     "morgan": "^1.8.2"
   }
 }

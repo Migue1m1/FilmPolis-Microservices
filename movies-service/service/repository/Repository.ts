@@ -13,12 +13,12 @@ export class Repository {
         let query = { title: title };
         Movie.findOne(query, (err, movie) => {
             if (err) {
-                res.json({ message: 'Error during find Movie', status: res.status, error: err });
+                res.status(400).json({ message: 'Error during find Movie', status: 400, error: err });
             }
             if (movie) {
-                res.json({ message: 'Movie found successfully', status: res.status, data: movie });
+                res.status(200).json({ message: 'Movie found successfully', status: 200, data: movie });
             } else {
-                res.json({ message: 'Movie not found with title: ' + title, status: res.status });
+                res.status(404).json({ message: 'Movie not found with title: ' + title, status: 404 });
             }
         });
     }
@@ -28,12 +28,12 @@ export class Repository {
         let query = { imdbId: imdbId };
         Movie.findOne (query, (err, movie) => {
             if (err) {
-                res.json({ message: 'Error during find Movie', status: res.status, error: err });
+                res.status(400).json({ message: 'Error during find Movie', status: 400, error: err });
             }
             if (movie) {
-                res.json({ message: 'Movie found successfully', status: res.status, data: movie });
+                res.status(200).json({ message: 'Movie found successfully', status: 200, data: movie });
             } else {
-                res.json({ message: 'Movie not found with imdbId: ' + imdbId, status: res.status });
+                res.status(404).json({ message: 'Movie not found with imdbId: ' + imdbId, status: 404 });
             }
         });
     }
@@ -45,13 +45,13 @@ export class Repository {
         if (token) {
             verify (token, mongoDb.getSecret(), (tokenError: any) => {
                 if (tokenError) {
-                    return res.json({ message: 'Filed to authenticate token', status: res.status });
+                    return res.status(403).json({ message: 'Filed to authenticate token', status: 403 });
                 }
-                return res.json({ message: 'Movie added', status: res.status });
+                return res.status(201).json({ message: 'Movie added', status: 201 });
             });
         }
         else {
-            return res.json({ message: 'Invalid token, please Log in first', status: res.status })
+            return res.status(403).json({ message: 'Invalid token, please Log in first', status: 403 })
         }
     }
 }

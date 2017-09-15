@@ -13,12 +13,12 @@ export class Repository {
         let query = { name: name };
         Actor.findOne(query, (err, actor) => {
             if (err) {
-                res.json({ message: 'Error during find Actor', status: res.status, error: err });
+                res.status(400).json({ message: 'Error during find Actor', status: 400, error: err });
             }
             if (actor) {
-                res.json({ message: 'Actor found successfully', status: res.status, data: actor });
+                res.status(200).json({ message: 'Actor found successfully', status: 200, data: actor });
             } else {
-                res.json({ message: 'Actor not found with name: ' + name, status: res.status });
+                res.status(404).json({ message: 'Actor not found with name: ' + name, status: 404 });
             }
         });
     }
@@ -28,12 +28,12 @@ export class Repository {
         let query = { id: id };
         Actor.findOne (query, (err, actor) => {
             if (err) {
-                res.json({ message: 'Error during find Actor', status: res.status, error: err });
+                res.status(400).json({ message: 'Error during find Actor', status: 400, error: err });
             }
             if (actor) {
-                res.json({ message: 'Actor found successfully', status: res.status, data: actor });
+                res.status(200).json({ message: 'Actor found successfully', status: 200, data: actor });
             } else {
-                res.json({ message: 'Actor not found with id: ' + id, status: res.status });
+                res.status(404).json({ message: 'Actor not found with id: ' + id, status: 404 });
             }
         });
     }
@@ -45,13 +45,13 @@ export class Repository {
         if (token) {
             verify (token, mongoDb.getSecret(), (tokenError: any) => {
                 if (tokenError) {
-                    return res.json({ message: 'Filed to authenticate token', status: res.status });
+                    return res.status(403).json({ message: 'Failed to authenticate token', status: 403 });
                 }
-                return res.json({ message: 'Actor added', status: res.status });
+                return res.status(201).json({ message: 'Actor added', status: 201 });
             });
         }
         else {
-            return res.json({ message: 'Invalid token, please Log in first', status: res.status })
+            return res.status(403).json({ message: 'Invalid token, please Log in first', status: 403 })
         }
     }
 }
