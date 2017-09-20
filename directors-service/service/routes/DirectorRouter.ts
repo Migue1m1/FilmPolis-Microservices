@@ -23,6 +23,7 @@ export class DirectorRouter {
     init () {
         this.router.get('/:name', this.repository.getByName);
         this.router.get('/id/:id', this.repository.getById);
+        this.router.post('/id', this.repository.getDirectorsById);
         this.router.post('/add', this.repository.addDirector);
     }
 }

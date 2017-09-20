@@ -21,6 +21,7 @@ export class ActorRouter {
     init () {
         this.router.get('/:name', this.repository.getByName);
         this.router.get('/id/:id', this.repository.getById);
+        this.router.post('/id', this.repository.getActorsById)
         this.router.post('/add', this.repository.addActor);
     }
 }

@@ -10,7 +10,6 @@ export class Repository {
 
     public async registerUser (req: Request, res: Response, next: NextFunction) {
         let userReq = req.body;
-
         let query = { username: userReq.username };
         await User.findOne(query, (err, user) => {
             if (err) {

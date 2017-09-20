@@ -1,6 +1,6 @@
-import * as mongoDb      from 'mongoose';
 import { IDbConnection } from './IDbConnection';
 import * as fs           from 'fs';
+const mongoDb = require('mongoose');
 
 const secret = 'hjg29ig9RbBQ]qAa6}uy#r$h$j*?fgd@ijYj/6%9{=gfgJGD[ESVVUY|&%&*';
 
@@ -63,6 +63,7 @@ class MongoDbConnection implements IDbConnection {
             pass: password
         };
 
+        mongoDb.Promise = global.Promise;
         mongoDb.connect(dbURI, options); 
 
         // CONNECTION EVENTS

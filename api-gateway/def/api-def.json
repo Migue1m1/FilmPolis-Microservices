@@ -1,0 +1,99 @@
+[
+    {
+        "service": "/users",
+        "host": "http://localhost",
+        "port": "2998",
+        "redirects": 
+            [
+                {
+                    "from": "/signin",
+                    "to": "/api/v1/users/signin",
+                    "method": "post"
+                },
+                {
+                    "from": "/login",
+                    "to": "/api/v1/users/login",
+                    "method": "post"
+                }
+            ]
+    },
+    {
+        "service": "/movies",
+        "host": "http://localhost",
+        "port": "2999",
+        "redirects": 
+            [
+                {
+                    "from": "/:title",
+                    "to": "/api/v1/movies/",
+                    "method": "get"
+                },
+                {
+                    "from": "/imdbId/:imdbId",
+                    "to": "/api/v1/movies/imdbId/",
+                    "method": "get"
+                },
+                {
+                    "from": "/add",
+                    "to": "/api/v1/movies/add",
+                    "method": "post"
+                }
+            ]
+    },
+    {
+        "service": "/actors",
+        "host": "http://localhost",
+        "port": "3000",
+        "redirects": 
+            [
+                {
+                    "from": "/:name",
+                    "to": "/api/v1/actors",
+                    "method": "get"
+                },
+                {
+                    "from": "/id/:id",
+                    "to": "/api/v1/actors/id",
+                    "method": "get"
+                },
+                {
+                    "from": "/id",
+                    "to": "/api/v1/actors/id",
+                    "method": "post roles"
+                },
+                {
+                    "from": "/add",
+                    "to": "/api/v1/actors/add",
+                    "method": "post"
+                }
+            ]
+    },
+    {
+        "service": "/directors",
+        "host": "http://localhost",
+        "port": "3001",
+        "redirects": 
+        [
+            {
+                "from": "/:name",
+                "to": "/api/v1/directors",
+                "method": "get"
+            },
+            {
+                "from": "/id/:id",
+                "to": "/api/v1/directors/id",
+                "method": "get"
+            },
+            {
+                "from": "/id",
+                "to": "/api/v1/directors/id",
+                "method": "post roles"
+            },
+            {
+                "from": "/add",
+                "to": "/api/v1/directors/add",
+                "method": "post"
+            }
+        ]
+    }
+]

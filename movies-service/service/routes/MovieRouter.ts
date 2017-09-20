@@ -2,7 +2,7 @@ import { Repository } from '../repository/Repository';
 import { Router }     from 'express';
 
 export class MovieRouter {
-    router: Router
+    router: Router;
     repository: Repository;
 
   /**

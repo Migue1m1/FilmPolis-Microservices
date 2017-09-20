@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import * as Actor                          from '../models/Actor';
 import { verify }                          from 'jsonwebtoken';
 import { MongoDbConnection }               from '../dbconnection/MongoDbConnection';
+import { Utils }                           from '../utils/Utils';
 
 let mongoDb = new MongoDbConnection();
 mongoDb.connect();
@@ -35,6 +36,15 @@ export class Repository {
             } else {
                 res.status(404).json({ message: 'Actor not found with id: ' + id, status: 404 });
             }
+        });
+    }
+
+    public getActorsById (req: Request, res: Response, next: NextFunction) {
+        let roles = req.body;
+        let ids = Utils.getIds(roles);
+        Actor.find({ id: { $in: ids } }, { _id: 0, name: 1, id: 1 }, (err, actors) => {
+            let data = Utils.getRolesWithNames(roles, actors);
+            res.status(200).json({ message: 'Succesful Search', status: 200, data: data });
         });
     }
 

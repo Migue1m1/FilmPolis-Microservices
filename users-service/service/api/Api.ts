@@ -7,8 +7,8 @@ import UserRouter      from '../routes/UserRouter';
 // Creates and configures an ExpressJS web server.
 class App {
 
-  // ref to Express instance
-  public express: express.Application;
+    // ref to Express instance
+    public express: express.Application;
 
     //Run configuration methods on the Express instance.
     constructor() {

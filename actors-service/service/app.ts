@@ -9,9 +9,13 @@ const port = normalizePort(process.env.PORT || 3000);
 App.set('port', port);
 
 const server = http.createServer(App);
-server.listen(port);
+server.listen(port, onInit);
 server.on('error', onError);
-server.on('listening', onListening);
+
+function onInit() {
+    console.log('------FilmPolis - API Actors------');
+    console.log('Running on http://localhost:' + server.address().port + '/api/v1/actors');
+}
 
 function normalizePort(val: number | string): number | string | boolean {
     let port: number = (typeof val === 'string')? parseInt(val, 10): val;
@@ -39,10 +43,4 @@ function onError(error: NodeJS.ErrnoException): void {
         default:
             throw error;
     }
-}
-
-function onListening(): void {
-    let addr = server.address();
-    let bind = (typeof addr === 'string')? `pipe ${addr}`: `port ${addr.port}`;
-    debug(`Listening on ${bind}`);
 }

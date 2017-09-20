@@ -37,13 +37,13 @@ describe('POST api/v1/users', () => {
 
     it('should return a token (LogIn)', () => {
         return chai.request(api).post('/api/v1/users/login')
-            .send({ username: "MigueDev96", password: "12345678" })
+            .send({ username: "Miguex", password: "123456" })
             .then(res => {
-                expect(res.status).to.equal(201);
+                expect(res.status).to.equal(200);
                 expect(res).to.be.json;
                 expect(res.body.data).to.exist;
                 expect(res.body.data).to.have.all.keys([
-                    'id',
+                    'userId',
                     'token'
                 ]);
             });
