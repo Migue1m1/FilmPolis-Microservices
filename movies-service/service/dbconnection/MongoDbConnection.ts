@@ -14,13 +14,13 @@ class MongoDbConnection implements IDbConnection {
     }
 
     connect() {
-        let dbName = "moviesDB";
+        let dbName = "moviesdb";
         let username = "";
         let password = "";
 
         let certificateSsl = [fs.readFileSync("./ssl/mongodb.pem")];
 
-        let serverURI = "192.168.1.103/" + dbName;
+        let serverURI = "miguel:123456@ds141474.mlab.com:41474/" + dbName;
         let repl1 = "192.168.1.105:27017";
         let repl2 = "192.168.1.106:27017";
         let repl3 = "192.168.1.107:27017";
@@ -37,9 +37,9 @@ class MongoDbConnection implements IDbConnection {
             server: {
                 poolSize: 5,
                 reconnectTries: Number.MAX_VALUE,
-                ssl: true,
+                ssl: false,
                 sslValidate: false,
-                sslCA: certificateSsl,
+                //sslCA: certificateSsl,
                 socketOptions: {
                     keepAlive: 1000,
                     connectTimeoutMS: 30000
