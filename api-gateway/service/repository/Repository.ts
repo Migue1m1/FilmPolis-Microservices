@@ -16,14 +16,14 @@ class Repository {
         switch (method.toUpperCase()) {
             case "GET":
                 app.get (proxyPath, (req: Request, res: Response) => {
-                    let param = req.params.name === undefined? (req.params.title === undefined? req.params.id: req.params.title): req.params.name;
+                    let param = req.params.name === undefined? (req.params.title === undefined? (req.params.id === undefined? req.params.text: req.params.id): req.params.title): req.params.name;
                     url = host + ":" + port;
                     supertest(url)
                         .get(path + '/' + param)
                             .end((err, resServ) => {
                                 if (resServ) {
                                     let resp = JSON.parse(resServ.text);
-                                    res.status(resp.status).json(resp);
+                                    return res.status(resp.status).json(resp);
                                 }
                             });
                 });
@@ -38,7 +38,7 @@ class Repository {
                                 .end((err, resServ) => {
                                     if (resServ) {
                                         let resp = JSON.parse(resServ.text);
-                                        res.status(resp.status).json(resp);
+                                        return res.status(resp.status).json(resp);
                                     }
                                 });
                 });
@@ -52,7 +52,7 @@ class Repository {
                             .send(req.body)
                                 .end((err, resServ) => {
                                     if (resServ) {
-                                        res.status(200).json({ data: JSON.parse(resServ.text).data });
+                                        return res.status(200).json({ data: JSON.parse(resServ.text).data });
                                     }
                                 });
                 });

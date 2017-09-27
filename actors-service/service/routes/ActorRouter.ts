@@ -19,6 +19,7 @@ export class ActorRouter {
      * endpoints.
      */
     init () {
+        this.router.get('/suggestions/:text', this.repository.getSuggestions);
         this.router.get('/:name', this.repository.getByName);
         this.router.get('/id/:id', this.repository.getById);
         this.router.post('/id', this.repository.getActorsById)

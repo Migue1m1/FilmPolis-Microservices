@@ -9,12 +9,27 @@ mongoDb.connect();
 
 export class Repository {
 
+    public getSuggestions  (req: Request, res: Response, next: NextFunction) {
+        let text = req.params.text;
+        let query = { name: new RegExp('^' + text, 'i') };
+        Actor.find(query, { _id: 0, name: 1, imageURL: 1 }).limit(10).exec((err, suggestions) => {
+            if (err) {
+                return res.status(400).json({ message: 'Error during find Actor', status: 400, error: err });
+            }
+            if (suggestions && suggestions != []) {
+                res.status(200).json({ message: 'Actor found successfully', status: 200, data: suggestions });
+            }
+            else
+                res.status(404).json({ message: 'Actor not found', status: 404 });
+        });
+    }
+
     public getByName (req: Request, res: Response, next: NextFunction) {
         let name = req.params.name;
         let query = { name: name };
         Actor.findOne(query, (err, actor) => {
             if (err) {
-                res.status(400).json({ message: 'Error during find Actor', status: 400, error: err });
+                return res.status(400).json({ message: 'Error during find Actor', status: 400, error: err });
             }
             if (actor) {
                 res.status(200).json({ message: 'Actor found successfully', status: 200, data: actor });
@@ -29,7 +44,7 @@ export class Repository {
         let query = { id: id };
         Actor.findOne (query, (err, actor) => {
             if (err) {
-                res.status(400).json({ message: 'Error during find Actor', status: 400, error: err });
+                return res.status(400).json({ message: 'Error during find Actor', status: 400, error: err });
             }
             if (actor) {
                 res.status(200).json({ message: 'Actor found successfully', status: 200, data: actor });

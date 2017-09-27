@@ -20,6 +20,7 @@ export class MovieRouter {
      */
     init () {
         this.router.get('/:title', this.repository.getByTitle);
+        this.router.get('/suggestions/:text', this.repository.getSuggestions);
         this.router.get('/imdbId/:imdbId', this.repository.getByImdbId);
         this.router.post('/add', this.repository.addMovie);
     }

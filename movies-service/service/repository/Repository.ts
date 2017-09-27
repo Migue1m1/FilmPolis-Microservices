@@ -10,12 +10,27 @@ mongoDb.connect();
 
 export class Repository {
 
+    public getSuggestions  (req: Request, res: Response, next: NextFunction) {
+        let text = req.params.text;
+        let query = { title: new RegExp('^' + text, 'i') };
+        Movie.find(query, { _id: 0, title: 1, imageURL: 1 }).limit(10).exec((err, suggestions) => {
+            if (err) {
+                return res.status(400).json({ message: 'Error during find Movie', status: 400, error: err });
+            }
+            if (suggestions && suggestions != []) {
+                res.status(200).json({ message: 'Movie found successfully', status: 200, data: suggestions });
+            }
+            else
+                res.status(404).json({ message: 'Movie not found', status: 404 });
+        });
+    }
+
     public getByTitle (req: Request, res: Response, next: NextFunction) {
         let title = req.params.title;
         let query = { title: title };
         Movie.findOne(query, (err, movie) => {
             if (err) {
-                res.status(400).json({ message: 'Error during find Movie', status: 400, error: err });
+                return res.status(400).json({ message: 'Error during find Movie', status: 400, error: err });
             }
             if (movie) {
                 let directorService = new DirectorService();
@@ -52,7 +67,7 @@ export class Repository {
         let query = { imdbId: imdbId };
         Movie.findOne (query, (err, movie) => {
             if (err) {
-                res.status(400).json({ message: 'Error during find Movie', status: 400, error: err });
+                return res.status(400).json({ message: 'Error during find Movie', status: 400, error: err });
             }
             if (movie) {
                 res.status(200).json({ message: 'Movie found successfully', status: 200, data: movie });

@@ -29,6 +29,11 @@
                     "method": "get"
                 },
                 {
+                    "from": "/suggestions/:text",
+                    "to": "/api/v1/movies/suggestions",
+                    "method": "get"
+                },
+                {
                     "from": "/imdbId/:imdbId",
                     "to": "/api/v1/movies/imdbId/",
                     "method": "get"
@@ -49,6 +54,11 @@
                 {
                     "from": "/:name",
                     "to": "/api/v1/actors",
+                    "method": "get"
+                },
+                {
+                    "from": "/suggestions/:text",
+                    "to": "/api/v1/actors/suggestions",
                     "method": "get"
                 },
                 {
@@ -77,6 +87,11 @@
             {
                 "from": "/:name",
                 "to": "/api/v1/directors",
+                "method": "get"
+            },
+            {
+                "from": "/suggestions/:text",
+                "to": "/api/v1/directors/suggestions",
                 "method": "get"
             },
             {

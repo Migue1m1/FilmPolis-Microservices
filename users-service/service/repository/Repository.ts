@@ -13,7 +13,7 @@ export class Repository {
         let query = { username: userReq.username };
         await User.findOne(query, (err, user) => {
             if (err) {
-                res.status(400).json({ message: 'Error during find User', status: 400, error: err });
+                return res.status(400).json({ message: 'Error during find User', status: 400, error: err });
             }
             if (user) {
                 res.status(400).json({ message: 'This user already exists!', status: 400 });
@@ -38,7 +38,7 @@ export class Repository {
         let query = { username: userReq.username };
         User.findOne (query, (err, user) => {
             if (err) {
-                res.status(400).json({ message: 'Error during find User', status: 400, error: err });
+                return res.status(400).json({ message: 'Error during find User', status: 400, error: err });
             }
             if (user && user.validPassword(userReq.password)) {
                 let token = sign({ username: user.username, userId: user.id }, mongoDb.getSecret());
