@@ -23,20 +23,10 @@ describe('GET API index', () => {
     });
 });
 
-describe('GET api/v1/movies', () => {
-
-    /*it('responds with JSON array', () => {
-      return chai.request(api).get('/api/v1/actors')
-        .then(res => {
-          expect(res.status).to.equal(200);
-          expect(res).to.be.json;
-          expect(res.body).to.be.an('array');
-          expect(res.body).to.have.length(44943);
-        });
-    });*/
+describe('GET api/movies', () => {
 
     it('should include Taxi Driver', () => {
-        return chai.request(api).get('/api/v1/movies/Taxi Driver')
+        return chai.request(api).get('/api/movies/Taxi Driver')
             .then(res => {
                 expect(res.status).to.equal(200);
                 expect(res).to.be.json;

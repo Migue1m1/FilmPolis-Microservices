@@ -48,7 +48,7 @@ class App {
             });
         });
         this.express.use('/', router);
-        this.express.use('/api/v1/directors', DirectorRouter);
+        this.express.use('/api/directors', DirectorRouter);
     }
 }
 

@@ -7,12 +7,12 @@
             [
                 {
                     "from": "/signin",
-                    "to": "/api/v1/users/signin",
+                    "to": "/api/users/signin",
                     "method": "post"
                 },
                 {
                     "from": "/login",
-                    "to": "/api/v1/users/login",
+                    "to": "/api/users/login",
                     "method": "post"
                 }
             ]
@@ -25,22 +25,22 @@
             [
                 {
                     "from": "/:title",
-                    "to": "/api/v1/movies/",
+                    "to": "/api/movies/",
                     "method": "get"
                 },
                 {
                     "from": "/suggestions/:text",
-                    "to": "/api/v1/movies/suggestions",
+                    "to": "/api/movies/suggestions",
                     "method": "get"
                 },
                 {
                     "from": "/imdbId/:imdbId",
-                    "to": "/api/v1/movies/imdbId/",
+                    "to": "/api/movies/imdbId/",
                     "method": "get"
                 },
                 {
                     "from": "/add",
-                    "to": "/api/v1/movies/add",
+                    "to": "/api/movies/add",
                     "method": "post"
                 }
             ]
@@ -53,27 +53,27 @@
             [
                 {
                     "from": "/:name",
-                    "to": "/api/v1/actors",
+                    "to": "/api/actors",
                     "method": "get"
                 },
                 {
                     "from": "/suggestions/:text",
-                    "to": "/api/v1/actors/suggestions",
+                    "to": "/api/actors/suggestions",
                     "method": "get"
                 },
                 {
                     "from": "/id/:id",
-                    "to": "/api/v1/actors/id",
+                    "to": "/api/actors/id",
                     "method": "get"
                 },
                 {
                     "from": "/id",
-                    "to": "/api/v1/actors/id",
+                    "to": "/api/actors/id",
                     "method": "post roles"
                 },
                 {
                     "from": "/add",
-                    "to": "/api/v1/actors/add",
+                    "to": "/api/actors/add",
                     "method": "post"
                 }
             ]
@@ -86,27 +86,27 @@
         [
             {
                 "from": "/:name",
-                "to": "/api/v1/directors",
+                "to": "/api/directors",
                 "method": "get"
             },
             {
                 "from": "/suggestions/:text",
-                "to": "/api/v1/directors/suggestions",
+                "to": "/api/directors/suggestions",
                 "method": "get"
             },
             {
                 "from": "/id/:id",
-                "to": "/api/v1/directors/id",
+                "to": "/api/directors/id",
                 "method": "get"
             },
             {
                 "from": "/id",
-                "to": "/api/v1/directors/id",
+                "to": "/api/directors/id",
                 "method": "post roles"
             },
             {
                 "from": "/add",
-                "to": "/api/v1/directors/add",
+                "to": "/api/directors/add",
                 "method": "post"
             }
         ]

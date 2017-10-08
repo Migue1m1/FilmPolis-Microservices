@@ -48,7 +48,7 @@ class App {
             });
         });
         this.express.use('/', router);
-        this.express.use('/api/v1/movies', MovieRouter);
+        this.express.use('/api/movies', MovieRouter);
     }
 }
 

@@ -14,7 +14,7 @@ server.on('error', onError);
 
 function onInit() {
     console.log('------FilmPolis - API Movies------');
-    console.log('Running on http://localhost:' + server.address().port + '/api/v1/movies');
+    console.log('Running on http://localhost:' + server.address().port + '/api/movies');
 }
 
 function normalizePort(val: number | string): number | string | boolean {

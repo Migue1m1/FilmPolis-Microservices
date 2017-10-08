@@ -24,20 +24,10 @@ describe('GET API index', () => {
     });
 });
 
-describe('GET api/v1/directors', () => {
-
-  /*it('responds with JSON array', () => {
-    return chai.request(api).get('/api/v1/actors')
-      .then(res => {
-        expect(res.status).to.equal(200);
-        expect(res).to.be.json;
-        expect(res.body).to.be.an('array');
-        expect(res.body).to.have.length(44943);
-      });
-  });*/
+describe('GET api/directors', () => {
 
     it('should include Quentin Tarantino', () => {
-        return chai.request(api).get('/api/v1/directors/Quentin Tarantino')
+        return chai.request(api).get('/api/directors/Quentin Tarantino')
             .then(res => {
                 expect(res.status).to.equal(200);
                 expect(res).to.be.json;

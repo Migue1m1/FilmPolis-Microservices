@@ -23,10 +23,10 @@ describe('GET API index', () => {
     });
 });
 
-describe('POST api/v1/users', () => {
+describe('POST api/users', () => {
 
     it('should return a confirm message (SignIn)', () => {
-        return chai.request(api).post('/api/v1/users/signin')
+        return chai.request(api).post('/api/users/signin')
             .send({ username: "MigueDev96", password: "12345678" })
             .then(res => {
                 expect(res.status).to.equal(201);
@@ -36,7 +36,7 @@ describe('POST api/v1/users', () => {
     });
 
     it('should return a token (LogIn)', () => {
-        return chai.request(api).post('/api/v1/users/login')
+        return chai.request(api).post('/api/users/login')
             .send({ username: "Miguex", password: "123456" })
             .then(res => {
                 expect(res.status).to.equal(200);
