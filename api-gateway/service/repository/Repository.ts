@@ -17,7 +17,10 @@ class Repository {
             case "GET":
                 app.get (proxyPath, (req: Request, res: Response) => {
                     let param = req.params.name === undefined? (req.params.title === undefined? (req.params.id === undefined? req.params.text: req.params.id): req.params.title): req.params.name;
-                    url = host + ":" + port;
+                    if (port == "N/A")
+                        url = host;
+                    else
+                        url = host + ":" + port;
                     supertest(url)
                         .get(path + '/' + param)
                             .end((err, resServ) => {
@@ -30,7 +33,10 @@ class Repository {
                 break;
             case "POST":
                 app.post (proxyPath, (req: Request, res: Response) => {
-                    url = host + ":" + port;
+                    if (port == "N/A")
+                        url = host;
+                    else
+                        url = host + ":" + port;
                     console.log(req.body);
                     supertest(url)
                         .post(path)
@@ -45,7 +51,10 @@ class Repository {
                 break;
             case "POST ROLES":
                 app.post (proxyPath, (req: Request, res: Response) => {
-                    url = host + ":" + port;
+                    if (port == "N/A")
+                        url = host;
+                    else
+                        url = host + ":" + port;
                     console.log(req.body);
                     supertest(url)
                         .post(path)

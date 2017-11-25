@@ -4,7 +4,7 @@ class ActorService {
     
     getActors(roles: any) {
         return new Promise((resolve, reject) => {
-            Supertest('localhost:9090')
+            Supertest('https://filmpolis-api.herokuapp.com')
                 .post('/api-gateway/actors/id')
                     .send(roles)
                         .end((err, res) => {

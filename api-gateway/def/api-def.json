@@ -19,8 +19,8 @@
     },
     {
         "service": "/movies",
-        "host": "http://localhost",
-        "port": "2999",
+        "host": "https://movies-service.herokuapp.com",
+        "port": "N/A",
         "redirects": 
             [
                 {
@@ -47,8 +47,8 @@
     },
     {
         "service": "/actors",
-        "host": "http://localhost",
-        "port": "3000",
+        "host": "https://actors-service.herokuapp.com",
+        "port": "N/A",
         "redirects": 
             [
                 {
@@ -80,8 +80,8 @@
     },
     {
         "service": "/directors",
-        "host": "http://localhost",
-        "port": "3001",
+        "host": "https://directors-service.herokuapp.com",
+        "port": "N/A",
         "redirects": 
         [
             {
